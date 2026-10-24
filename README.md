@@ -1,6 +1,6 @@
 # TurtleBot3 Visual Navigation with LiquidAI/d1-3B
 
-Gazebo 上の TurtleBot3 Waffle Pi が、車載カメラ（`/camera/image_raw`）の画像をローカルのマルチモーダル意思決定モデル [LiquidAI/d1-3B](https://huggingface.co/LiquidAI/d1-3B) に渡し、椅子の正面で停止するまでの行動を選択するデモです。
+Gazebo 上の TurtleBot3 Waffle Pi が、車載カメラの画像をローカルのマルチモーダル意思決定モデル [LiquidAI/d1-3B](https://huggingface.co/LiquidAI/d1-3B) に渡し、椅子の正面で停止するまでの行動を選択するデモです。
 
 ## タスクと設計意図
 
@@ -8,7 +8,6 @@ Gazebo 上の TurtleBot3 Waffle Pi が、車載カメラ（`/camera/image_raw`�
 
 - **木目の椅子（目標）と木の箱（ダミー）**: 同じ材質・同程度の幅を持ち、形状（背もたれと脚の有無）から「座れるもの」を視覚的に見分ける必要があります。
 - **床の低い小物**: 高さ 0.04 m の円柱で、2D LiDAR（走査高さ約 0.12 m）の下をすり抜けるためカメラ画像でのみ検知できます。
-- **初期姿勢**: ロボットは `x = -1.2 m`、左向き（+Y 方向、ヨー角 +90 度）でスポーンするため、開始時点では椅子が正面視野に入っておらず、探索旋回から始まります。
 
 ### 1 回の推論で評価する 4 つの質問
 
