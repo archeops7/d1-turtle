@@ -67,10 +67,11 @@ QUESTIONS = {
     "crush_risk": {
         "type": "noul",
         "instructions": (
-            "Would moving forward now hit a small object on the floor "
-            "or enter the gap under furniture? "
-            "An object low in the image, or cut off by the bottom edge, is already close enough to hit. "
-            "A tiny speck near the horizon is still far."
+            "Is any object resting on the floor straight ahead of the robot, in the horizontal middle of the image? "
+            "The camera is close to the floor, so such an object can appear just below the furniture or wall behind it, "
+            "even when it is close. "
+            "An object that looks large at the bottom of the image, or is cut off by the bottom edge, is very close and also counts. "
+            "The open gap under a table or other furniture straight ahead also counts."
         ),
     },
     "progress": {
