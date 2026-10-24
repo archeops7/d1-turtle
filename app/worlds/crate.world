@@ -1,0 +1,99 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="semantic_room_crate">
+    <!-- 2) 椅子と木箱の見分け。初期姿勢は select_world.sh: x=-1.55 y=0.00 yaw=0 -->
+    <include><uri>model://ground_plane</uri></include>
+    <include><uri>model://sun</uri></include>
+    <scene>
+      <ambient>0.32 0.32 0.32 1</ambient>
+      <background>0.68 0.72 0.76 1</background>
+      <shadows>0</shadows>
+    </scene>
+    <light name="ceiling" type="point">
+      <pose>0.3 0 2.4 0 0 0</pose>
+      <diffuse>0.4 0.4 0.38 1</diffuse>
+      <specular>0.04 0.04 0.04 1</specular>
+      <attenuation>
+        <range>8</range>
+        <constant>0.55</constant>
+        <linear>0.18</linear>
+        <quadratic>0.05</quadratic>
+      </attenuation>
+      <cast_shadows>0</cast_shadows>
+    </light>
+    <physics type="ode">
+      <max_step_size>0.001</max_step_size>
+      <real_time_update_rate>1000</real_time_update_rate>
+      <real_time_factor>1</real_time_factor>
+    </physics>
+    <gui fullscreen="0">
+      <camera name="user_camera">
+        <pose>0.2 -5.2 3.2 0 0.55 1.5708</pose>
+      </camera>
+    </gui>
+    <model name="walls">
+      <static>true</static>
+      <pose>0 0 0 0 0 0</pose>
+      <link name="link">
+        <visual name="north"><pose>0.0500 2.0000 0.5 0 0 0</pose><geometry><box><size>4.5000 0.1000 1.0</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="north"><pose>0.0500 2.0000 0.5 0 0 0</pose><geometry><box><size>4.5000 0.1000 1.0</size></box></geometry></collision>
+        <visual name="south"><pose>0.0500 -2.0000 0.5 0 0 0</pose><geometry><box><size>4.5000 0.1000 1.0</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="south"><pose>0.0500 -2.0000 0.5 0 0 0</pose><geometry><box><size>4.5000 0.1000 1.0</size></box></geometry></collision>
+        <visual name="west"><pose>-2.2000 0.0000 0.5 0 0 0</pose><geometry><box><size>0.1000 4.0000 1.0</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="west"><pose>-2.2000 0.0000 0.5 0 0 0</pose><geometry><box><size>0.1000 4.0000 1.0</size></box></geometry></collision>
+        <visual name="east"><pose>2.3000 0.0000 0.5 0 0 0</pose><geometry><box><size>0.1000 4.0000 1.0</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="east"><pose>2.3000 0.0000 0.5 0 0 0</pose><geometry><box><size>0.1000 4.0000 1.0</size></box></geometry></collision>
+      </link>
+    </model>
+    <model name="chair">
+      <static>true</static>
+      <pose>1.3500 1.1000 0.0000 0 0 0.0000</pose>
+      <link name="link">
+        <visual name="seat"><pose>0.0000 0.0000 0.2800 0 0 0.0000</pose><geometry><box><size>0.4000 0.4000 0.0500</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="seat"><pose>0.0000 0.0000 0.2800 0 0 0.0000</pose><geometry><box><size>0.4000 0.4000 0.0500</size></box></geometry></collision>
+        <visual name="back"><pose>0.1800 0.0000 0.5200 0 0 0.0000</pose><geometry><box><size>0.0500 0.4000 0.4600</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="back"><pose>0.1800 0.0000 0.5200 0 0 0.0000</pose><geometry><box><size>0.0500 0.4000 0.4600</size></box></geometry></collision>
+        <visual name="leg_fl"><pose>0.1600 0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="leg_fl"><pose>0.1600 0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry></collision>
+        <visual name="leg_fr"><pose>0.1600 -0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="leg_fr"><pose>0.1600 -0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry></collision>
+        <visual name="leg_bl"><pose>-0.1600 0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="leg_bl"><pose>-0.1600 0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry></collision>
+        <visual name="leg_br"><pose>-0.1600 -0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="leg_br"><pose>-0.1600 -0.1600 0.1400 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.2800</size></box></geometry></collision>
+      </link>
+    </model>
+    <model name="crate">
+      <static>true</static>
+      <pose>0.1000 0.0000 0.2200 0 0 0.0000</pose>
+      <link name="link">
+        <visual name="body"><pose>0.0000 0.0000 0.0000 0 0 0.0000</pose><geometry><box><size>0.4000 0.4000 0.4400</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Wood</name></script></material></visual>
+        <collision name="body"><pose>0.0000 0.0000 0.0000 0 0 0.0000</pose><geometry><box><size>0.4000 0.4000 0.4400</size></box></geometry></collision>
+      </link>
+    </model>
+    <model name="table">
+      <static>true</static>
+      <pose>0.1500 -1.5500 0.0000 0 0 0.0000</pose>
+      <link name="link">
+        <visual name="top"><pose>0.0000 0.0000 0.4200 0 0 0.0000</pose><geometry><box><size>0.7000 0.4200 0.0400</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="top"><pose>0.0000 0.0000 0.4200 0 0 0.0000</pose><geometry><box><size>0.7000 0.4200 0.0400</size></box></geometry></collision>
+        <visual name="leg_fl"><pose>0.3000 0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="leg_fl"><pose>0.3000 0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry></collision>
+        <visual name="leg_fr"><pose>0.3000 -0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="leg_fr"><pose>0.3000 -0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry></collision>
+        <visual name="leg_bl"><pose>-0.3000 0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="leg_bl"><pose>-0.3000 0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry></collision>
+        <visual name="leg_br"><pose>-0.3000 -0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Grey</name></script></material></visual>
+        <collision name="leg_br"><pose>-0.3000 -0.1600 0.2000 0 0 0.0000</pose><geometry><box><size>0.0400 0.0400 0.4000</size></box></geometry></collision>
+      </link>
+    </model>
+    <model name="floor_object">
+      <static>true</static>
+      <pose>-1.2000 1.6200 0.0000 0 0 0.0000</pose>
+      <link name="link">
+        <visual name="body"><pose>0.0000 0.0000 0.0200 0 0 0.0000</pose><geometry><cylinder><radius>0.0450</radius><length>0.0400</length></cylinder></geometry><material><script><uri>file://media/materials/scripts/gazebo.material</uri><name>Gazebo/Red</name></script></material></visual>
+        <collision name="body"><pose>0.0000 0.0000 0.0200 0 0 0.0000</pose><geometry><cylinder><radius>0.0450</radius><length>0.0400</length></cylinder></geometry></collision>
+      </link>
+    </model>
+  </world>
+</sdf>

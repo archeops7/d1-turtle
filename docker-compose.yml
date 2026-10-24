@@ -1,0 +1,32 @@
+services:
+  d1-turtlebot:
+    build: .
+    gpus: all
+    shm_size: "4gb"
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+      - apparmor:unconfined
+    stop_signal: SIGINT
+    stop_grace_period: 15s
+    environment:
+      DISPLAY: ${DISPLAY:-:0}
+      WAYLAND_DISPLAY: ${WAYLAND_DISPLAY:-wayland-0}
+      XDG_RUNTIME_DIR: /mnt/wslg/runtime-dir
+      PULSE_SERVER: /mnt/wslg/PulseServer
+      QT_X11_NO_MITSHM: "1"
+      TURTLEBOT3_MODEL: waffle_pi
+      ROS_DOMAIN_ID: "30"
+      HF_HOME: /cache/huggingface
+      D1_LAYOUT: ${D1_LAYOUT:-}
+    devices:
+      - /dev/dxg:/dev/dxg
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - /mnt/wslg:/mnt/wslg
+      - /usr/lib/wsl:/usr/lib/wsl:ro
+      - hf-cache:/cache/huggingface
+
+volumes:
+  hf-cache:

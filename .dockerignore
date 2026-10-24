@@ -1,0 +1,5 @@
+.git
+agent-tools
+**/__pycache__
+**/*.pyc
+README.md
